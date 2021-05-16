@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>登录</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<script src="./js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="./js/npm.js" type="text/javascript"></script>
+		
+		 <script type="text/javascript">
+		        //是否为空
+		        function ifnull(txt){
+		            if(txt.length==0){
+		                return true;
+		            }
+		            var $reg=/\s+/;
+		            return $reg.test(txt);
+		        } 
+		        //在id为email的元素失去焦点时进行邮箱的验证
+		        $("#email").blur(function(){
+		            if(ifnull($(this).val())){
+		                $("#email_msg").html("邮箱不能为空");
+		            }else{
+		                var $reg=/^[a-zA-Z1-9]\w{1,}@[a-zA-Z1-9]{2,}(\.(com|cn|net)){1,2}$/;
+		                if(!$reg.test($("#email").val())){
+		                    $("#email_msg").html("邮箱格式错误！");
+		                }else{
+		                    $("#email_msg").html("√").CSS("color","green");
+		                }
+		            }
+		        });
+		        //在id为username的元素失去焦点时进行用户名的验证
+		        $("#username").blur(function(){
+		            if(ifnull($(this).val())){
+		                $("#username_msg").html("用户名不能为空");
+		            }else{
+		                var $reg=/^\w{6,}$/;
+		                if(!$reg.test($("#username").val())){
+		                    $("#username_msg").html("用户名至少要6位哦");
+		                }else{
+		                    $("#username_msg").html("√");
+		                }
+		            }
+		        });
+		        //在id为password的元素失去焦点时进行密码的验证
+		        $("#password").blur(function(){
+		            if(ifnull($(this).val())){
+		                $("#password_msg").html("用户名不能为空");
+		            }else{
+		                var $reg=/^\w{6,}$/;
+		                if(!$reg.test($("#password").val())){
+		                    $("#password_msg").html("密码至少要6位哦");
+		                }else{
+		                    $("#password_msg").html("√");
+		                }
+		            }
+		        });
+		        //在id为repassword的元素失去焦点时进行密码的验证
+		        $("#repassword").blur(function(){
+		            if(ifnull($(this).val())){
+		                $("#repassword_msg").html("请确认密码");
+		            }else{
+		                if($("#password").val()!=$("#repassword").val()){
+		                    $("#repassword_msg").html("两次密码不一致");
+		                }else{
+		                    $("#repassword_msg").html("√");
+		                }
+		            }
+		        });
+		
+		        //验证表单
+		        function checkForm(){
+		            //验证邮箱
+		            if(ifnull($("#email").val())){
+		                $("#email_msg").html("邮箱不能为空！");
+		                return false;
+		            }else{
+		                var $reg=/^[a-zA-Z1-9]\w{1,}@[a-zA-Z1-9]{2,}(\.(com|cn|net)){1,2}$/;
+		                if(!$reg.test($("#email").val())){
+		                    $("#email_msg").html("邮箱格式错误！");
+		                    return false;
+		                }
+		            }
+		            //验证用户名
+		            if(ifnull($("#username").val())){
+		                $("#username_msg").html("用户名不能为空！");
+		                return false;
+		            }else{
+		                var $reg=/^\w{6,}$/;
+		                if(!$reg.test($("#username").val())){
+		                    $("#username_msg").html("用户名至少6位");
+		                    return false;
+		                }
+		            }
+		            //验证密码
+		            if(ifnull($("#password").val())){
+		                $("#password_msg").html("密码不能为空");
+		                return false;
+		            }else{
+		                var $reg=/^\w{6,}$/;
+		                if(!$reg.test($("#password").val())){
+		                    $("#password_msg").html("密码至少6位");
+		                    return false;
+		                }
+		            }
+		            //确认密码是否为空
+		            if(ifnull($("#repassword").val())){
+		                $("#repassword_msg").html("请确认密码");
+		                return false;
+		            }
+		            //验证两次密码是否一致
+		            if($("#password").val()!=$("#repassword").val()){
+		                $("#repassword_msg").html("两次密码不一致");
+		                return false;
+		            }
+		            return true;
+		        }
+		    </script>
+		
+	</head>
+	<body style="background: url(./img/truetopia-ufo-behance-er-0110.jpg); background-repeat: no-repeat; background-size:cover ;>
+		
+		<div class="center-block">
+		<div class="row">
+		<div class="col-md-4"></div>
+		 <div class="col-md-4">
+		
+		      <form class="form-signin">
+		        <h2 class="form-signin-heading">登录系统</h2>
+		        <label for="inputEmail" class="sr-only">邮箱</label>
+		        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+		        <label for="inputPassword" class="sr-only">密码</label>
+		        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+		        <div class="checkbox">
+		          <label>
+		            <input type="checkbox" value="remember-me">记住密码
+		          </label>
+		        </div>
+		        <a href="index.html" class="btn btn-lg btn-primary btn-block" type="submit">登录</a>
+				<a href="sign_in.html" class="btn btn-lg btn-primary btn-block" type="submit">注册</a>
+		      </form>
+		
+		    </div>
+			<div class="col-md-4"></div>
+			
+			</div>
+			</div>
+			<div class="navbar-fixed-bottom">
+			<footer class="footer"; >
+			  <p class ="text-center">&copy; Company 2021 from：Edgar</p>
+			</footer>
+			</div>
+	</body>
+</html>
